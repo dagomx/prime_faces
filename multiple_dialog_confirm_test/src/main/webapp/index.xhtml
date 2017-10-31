@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <h:head></h:head>
+    <h:body style="margin-left:30px">
+        <h5>PrimeFaces - Multiple Confirm Dialog Test</h5>
+
+        <h:form>
+            <p:growl id="messageA" showDetail="true" />            
+            
+            <!-- Dialog 1 -->
+            <p:commandButton type="button" onclick="PF('cd').show()" value="Show Alert" />
+            <p:confirmDialog message="Show message alert?"
+                             header="Confirmation Dialog - Show Alert" 
+                             severity="alert"
+                             widgetVar="cd">
+                <p:commandButton value="Yes" 
+                                 actionListener="#{dialogView.showMessageA}"
+                                 update="messageA" 
+                                 oncomplete="PF('cd').hide()"/>
+                <p:commandButton value="No" 
+                                 onclick="PF('cd').hide();" 
+                                 type="button" />
+            </p:confirmDialog>
+            
+            <!-- Dialog 2 -->
+            <p:commandButton type="button" onclick="PF('cd2').show()" value="Go to page 2" />
+            <p:confirmDialog message="Go to page 2?"
+                             header="Confirmation Dialog - Go to page 2" 
+                             severity="alert"
+                             widgetVar="cd2">
+                <p:commandButton value="Yes" 
+                                 action="#{dialogView.showMessageB}" />
+                <p:commandButton value="No" onclick="PF('cd2').hide();" type="button" />
+            </p:confirmDialog>
+        </h:form>
+        
+    </h:body>
+</html>
